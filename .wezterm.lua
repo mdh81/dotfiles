@@ -94,6 +94,8 @@ config.key_tables = {
     { key = 'n', action = act.SplitVertical { domain = 'CurrentPaneDomain' } },
     { key = 'v', action = act.SplitHorizontal { domain = 'CurrentPaneDomain' } },
     { key = 'w', action = act.ActivatePaneDirection 'Next' },
+    { key = 'j', action = act.ActivatePaneDirection 'Down' },
+    { key = 'k', action = act.ActivatePaneDirection 'Up' },
   },
 }
 
