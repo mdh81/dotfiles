@@ -109,8 +109,22 @@ config.keys = {
   -- Ctrl-s, then b/e or r lists and renames workspaces.
   { key = 's', mods = 'CTRL', action = act.ActivateKeyTable { name = 'workspace_nav', one_shot = true, timeout_milliseconds = 1500 } },
 
-  -- Ctrl-w, then n/v/w creates and cycles panes.
-  { key = 'w', mods = 'CTRL', action = act.ActivateKeyTable { name = 'pane_nav', one_shot = true, timeout_milliseconds = 1500 } },
+  -- Ctrl-w is Vim's window-command prefix; only use it for WezTerm pane
+  -- navigation outside Vim.
+  {
+    key = 'w',
+    mods = 'CTRL',
+    action = wezterm.action_callback(function(window, pane)
+      if is_vim(pane) then
+        window:perform_action(act.SendKey { key = 'w', mods = 'CTRL' }, pane)
+      else
+        window:perform_action(
+          act.ActivateKeyTable { name = 'pane_nav', one_shot = true, timeout_milliseconds = 1500 },
+          pane
+        )
+      end
+    end),
+  },
 
   -- Make Alt-arrow word movement work in shells/readline.
   { key = 'LeftArrow', mods = 'ALT', action = act.SendString '\x1bb' },
