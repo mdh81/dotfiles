@@ -44,6 +44,36 @@ local function is_vim(pane)
   return process_name:match("n?vim") ~= nil
 end
 
+local function pane_working_dir(pane)
+  local cwd_uri = pane:get_current_working_dir()
+  if cwd_uri and cwd_uri.file_path then
+    return cwd_uri.file_path
+  end
+
+  return wezterm.home_dir
+end
+
+local codex_exec_script = [[
+if ! command -v codex >/dev/null 2>&1; then
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+fi
+
+if ! command -v codex >/dev/null 2>&1; then
+  printf 'codex was not found on PATH.\n'
+  printf 'Press Enter to close this tab...'
+  IFS= read -r _
+  exit 127
+fi
+
+codex exec --ephemeral --color never --sandbox read-only --cd "$1" -- "$2"
+status=$?
+printf '\n[codex exited with status %s]\n' "$status"
+printf 'Press Enter to close this tab...'
+IFS= read -r _
+exit "$status"
+]]
+
 -- ====================================================================
 -- ⌨️ MODAL KEY TABLES & SHORTCUTS
 -- ====================================================================
@@ -108,6 +138,29 @@ config.keys = {
 
   -- Ctrl-s, then b/e or r lists and renames workspaces.
   { key = 's', mods = 'CTRL', action = act.ActivateKeyTable { name = 'workspace_nav', one_shot = true, timeout_milliseconds = 1500 } },
+
+  -- Ctrl-i prompts for a Codex request and shows the response in a new tab.
+  {
+    key = 'i',
+    mods = 'CTRL',
+    action = act.PromptInputLine {
+      description = 'Prompt Codex',
+      action = wezterm.action_callback(function(window, pane, line)
+        if not line or line == '' then
+          return
+        end
+
+        local cwd = pane_working_dir(pane)
+        window:perform_action(
+          act.SpawnCommandInNewTab {
+            cwd = cwd,
+            args = { 'bash', '-lc', codex_exec_script, 'codex-wezterm', cwd, line },
+          },
+          pane
+        )
+      end),
+    },
+  },
 
   -- Ctrl-w is Vim's window-command prefix; only use it for WezTerm pane
   -- navigation outside Vim.
