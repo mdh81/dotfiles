@@ -66,7 +66,7 @@ if ! command -v codex >/dev/null 2>&1; then
   exit 127
 fi
 
-codex exec --ephemeral --color never --sandbox read-only --cd "$1" -- "$2"
+codex exec --ephemeral --skip-git-repo-check --color never --sandbox read-only --cd "$1" -- "$2"
 status=$?
 printf '\n[codex exited with status %s]\n' "$status"
 printf 'Press Enter to close this tab...'
