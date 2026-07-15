@@ -9,51 +9,65 @@ map("i", "jk", "<ESC>")
 map("n", "<C-w>v", "<cmd>vsplit<CR>", { desc = "Vertical split" })
 map("n", "<C-w>n", "<cmd>split<CR>", { desc = "Horizontal split" })
 
-vim.keymap.set("n", "\\be", "<cmd>BufExplorer<CR>", {
-  desc = "Buffer Explorer",
-})
+-- Enter terminal normal mode with escape
+map("t", "<Esc>", [[<C-\><C-n>]], { desc = "Enter normal mode in terminal" })
+
+
+-- Buffer explorer
+map("n", "\\be", "<cmd>BufExplorer<CR>", { desc = "Buffer Explorer" })
+
+-- Telescope
+map("n", "\\f", "<cmd>Telescope find_files<CR>", { desc = "Find files" })
+map("n", "\\g", "<cmd>Telescope live_grep<CR>", { desc = "Find in files" })
 
 -- Debugger
 
-vim.keymap.set("n", "<F5>", function()
+map("n", "<F5>", function()
 
   require("dap").continue()
 
 end, { desc = "Debug start/continue" })
 
-vim.keymap.set("n", "<F9>", function()
+map("n", "<F9>", function()
 
   require("dap").toggle_breakpoint()
 
 end, { desc = "Toggle breakpoint" })
 
-vim.keymap.set("n", "<F10>", function()
+map("n", "<F10>", function()
 
   require("dap").step_over()
 
 end, { desc = "Step over" })
 
-vim.keymap.set("n", "<F11>", function()
+map("n", "<F11>", function()
 
   require("dap").step_into()
 
 end, { desc = "Step into" })
 
-vim.keymap.set("n", "<S-F11>", function()
+map("n", "<S-F11>", function()
 
   require("dap").step_out()
 
 end, { desc = "Step out" })
 
-vim.keymap.set("n", "<leader>du", function()
+map("n", "<leader>du", function()
 
   require("dapui").toggle()
 
 end, { desc = "Toggle debugger UI" })
 
-vim.keymap.set("n", "<leader>dr", function()
+map("n", "<leader>dr", function()
 
   require("dap").repl.toggle()
 
 end, { desc = "Debugger REPL" })
 
+-- Reloads a specific module (e.g., your options or plugin configs)
+map("n", "\r", function()
+    -- Replace 'user.options' with your actual module path relative to your lua/ folder
+    require('plenary.reload').reload_module('user.options')
+    require('user.options')
+    print("Config reloaded!")
+end, { desc = 'Reload Lua modules' })
