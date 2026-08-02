@@ -36,8 +36,7 @@ vim.schedule(function()
   require "mappings"
 end)
 
--- Legacy vim usuals
-
+-- Always on vim prefs
 vim.opt.shiftwidth=4
 vim.opt.tabstop=4
 vim.opt.expandtab=true

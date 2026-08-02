@@ -22,31 +22,31 @@ map("n", "\\g", "<cmd>Telescope live_grep<CR>", { desc = "Find in files" })
 
 -- Debugger
 
-map("n", "<F5>", function()
+map("n", "<F9>", function()
 
   require("dap").continue()
 
 end, { desc = "Debug start/continue" })
 
-map("n", "<F9>", function()
+map("n", "<F5>", function()
 
   require("dap").toggle_breakpoint()
 
 end, { desc = "Toggle breakpoint" })
 
-map("n", "<F10>", function()
+map("n", "<F8>", function()
 
   require("dap").step_over()
 
 end, { desc = "Step over" })
 
-map("n", "<F11>", function()
+map("n", "<F7>", function()
 
   require("dap").step_into()
 
 end, { desc = "Step into" })
 
-map("n", "<S-F11>", function()
+map("n", "<S-F7>", function()
 
   require("dap").step_out()
 
@@ -64,10 +64,10 @@ map("n", "<leader>dr", function()
 
 end, { desc = "Debugger REPL" })
 
--- Reloads a specific module (e.g., your options or plugin configs)
-map("n", "\r", function()
-    -- Replace 'user.options' with your actual module path relative to your lua/ folder
-    require('plenary.reload').reload_module('user.options')
-    require('user.options')
-    print("Config reloaded!")
-end, { desc = 'Reload Lua modules' })
+map("n", "gl", function()
+    vim.diagnostic.open_float({ scope = "cursor" })
+  end, { desc = "Show diagnostic" })
+
+map({ "n", "v" }, "<leader>ca", function()
+  vim.lsp.buf.code_action()
+end, { desc = "LSP code action" })
