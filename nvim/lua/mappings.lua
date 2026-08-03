@@ -71,3 +71,4 @@ map("n", "gl", function()
 map({ "n", "v" }, "<leader>ca", function()
   vim.lsp.buf.code_action()
 end, { desc = "LSP code action" })
+
