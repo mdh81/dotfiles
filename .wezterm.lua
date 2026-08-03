@@ -14,7 +14,7 @@ config.font = wezterm.font_with_fallback({
 config.font_size = 15
 
 -- 2. Theme Selection 
-config.color_scheme = 'Tokyo Night'
+config.color_scheme = 'Catppucin Macchiato (Gogh)'
 
 -- 3. Window Layout Aesthetic
 config.window_background_opacity = 0.95        -- Sleek transparency
@@ -183,5 +183,11 @@ config.keys = {
   { key = 'LeftArrow', mods = 'ALT', action = act.SendString '\x1bb' },
   { key = 'RightArrow', mods = 'ALT', action = act.SendString '\x1bf' },
 }
+
+-- Load the theme rotator plugin
+local theme_rotator = wezterm.plugin.require 'https://github.com/koh-sh/wezterm-theme-rotator'
+
+-- Apply the plugin
+theme_rotator.apply_to_config(config)
 
 return config
