@@ -12,7 +12,11 @@ vim.lsp.config("clangd", {
   cmd = clangd_cmd,
 })
 
-local servers = { "basedpyright", "clangd", "cssls", "html" }
+vim.lsp.config("neocmake", {
+  root_markers = { "CMakeLists.txt", ".neocmake.toml", ".git" },
+})
+
+local servers = { "basedpyright", "clangd", "cssls", "html", "neocmake" }
 vim.lsp.enable(servers)
 
 -- Add server-specific overrides with vim.lsp.config(); nvim-lspconfig
