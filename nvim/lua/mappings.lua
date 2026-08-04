@@ -72,3 +72,5 @@ map({ "n", "v" }, "<leader>ca", function()
   vim.lsp.buf.code_action()
 end, { desc = "LSP code action" })
 
+vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { desc = 'LSP Rename' })
+

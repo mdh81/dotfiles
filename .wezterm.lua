@@ -14,7 +14,7 @@ config.font = wezterm.font_with_fallback({
 config.font_size = 15
 
 -- 2. Theme Selection 
-config.color_scheme = 'Ashes (base16)'
+config.color_scheme = 'rose-pine-moon'
 
 -- 3. Window Layout Aesthetic
 config.window_background_opacity = 0.85        -- Sleek transparency
@@ -183,6 +183,8 @@ config.keys = {
   { key = 'LeftArrow', mods = 'ALT', action = act.SendString '\x1bb' },
   { key = 'RightArrow', mods = 'ALT', action = act.SendString '\x1bf' },
 }
+
+config.term = "wezterm"
 
 -- Load the theme rotator plugin
 -- local theme_rotator = wezterm.plugin.require 'https://github.com/koh-sh/wezterm-theme-rotator'
