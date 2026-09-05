@@ -42,3 +42,20 @@ vim.opt.tabstop=4
 vim.opt.expandtab=true
 vim.opt.number = true
 vim.opt.relativenumber = false
+
+-- Always hidden in nvim tree
+require("nvim-tree").setup({
+  filters = {
+    dotfiles = false,
+    git_ignored = true,
+    custom = {
+      "^\\.git$",
+      "^cmake-build-debug$",
+      "^cmake-build-release$",
+      "^emscripten_build$",
+      "^emscripten_install$",
+      "^target$",
+      "^build$",
+    },
+  },
+})

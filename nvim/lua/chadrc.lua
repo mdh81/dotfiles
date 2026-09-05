@@ -6,12 +6,16 @@
 local M = {}
 
 M.base46 = {
-	theme = "rosepine",
+	theme = "chocolate",
 
 	-- hl_override = {
 	-- 	Comment = { italic = true },
 	-- 	["@comment"] = { italic = true },
 	-- },
+}
+
+M.ui = {
+    transparency = true,
 }
 
 -- M.nvdash = { load_on_startup = true }

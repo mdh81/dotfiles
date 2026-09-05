@@ -17,9 +17,9 @@ config.font_size = 15
 config.color_scheme = 'rose-pine-moon'
 
 -- 3. Window Layout Aesthetic
-config.window_background_opacity = 0.85        -- Sleek transparency
-config.macos_window_background_blur = 20       -- Beautiful macOS blurred frost look
+config.window_background_opacity = 0.95        -- Sleek transparency
 config.window_decorations = "RESIZE"           -- Removes ugly native title bar buttons
+config.macos_window_background_blur = 20       -- Beautiful macOS blurred frost look
 config.window_padding = {                      -- Generous breathing room
   left = 12,
   right = 12,
@@ -31,7 +31,7 @@ config.window_padding = {                      -- Generous breathing room
 config.use_dead_keys = false
 config.enable_tab_bar = true
 config.use_fancy_tab_bar = false               -- Clean flat tabs instead of fat blocks
-config.tab_bar_at_bottom = true                -- Tabs at the bottom like tmux status line
+config.tab_bar_at_bottom = false               -- Tabs at the bottom like tmux status line
 
 -- ====================================================================
 -- 🧠 VIM PROCESS PASSTHROUGH LOGIC
@@ -184,7 +184,12 @@ config.keys = {
   { key = 'RightArrow', mods = 'ALT', action = act.SendString '\x1bf' },
 }
 
-config.term = "wezterm"
+config.term = 'xterm'
+
+config.colors = {
+  selection_bg = '#b4beaa', -- Background color for selected text
+  selection_fg = '#11111b', -- Text color for selected text
+}
 
 -- Load the theme rotator plugin
 -- local theme_rotator = wezterm.plugin.require 'https://github.com/koh-sh/wezterm-theme-rotator'
