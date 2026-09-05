@@ -68,3 +68,7 @@ require("nvim-tree").setup({
     },
   },
 })
+
+--Transparent background for nvim tree
+vim.api.nvim_set_hl(0, "NvimTreeNormal", { bg = "NONE" })
+vim.api.nvim_set_hl(0, "NvimTreeNormalNC", { bg = "NONE" })
