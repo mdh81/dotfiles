@@ -36,6 +36,15 @@ vim.schedule(function()
   require "mappings"
 end)
 
+--Transparent background
+vim.cmd([[
+  hi Normal guibg=NONE ctermbg=NONE
+  hi NonText guibg=NONE ctermbg=NONE
+  hi StatusLine guibg=NONE ctermbg=NONE
+  hi LineNr guibg=NONE ctermbg=NONE
+  hi VertSplit guibg=NONE ctermbg=NONE
+]])
+
 -- Always on vim prefs
 vim.opt.shiftwidth=4
 vim.opt.tabstop=4
