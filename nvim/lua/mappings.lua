@@ -74,3 +74,6 @@ end, { desc = "LSP code action" })
 
 vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { desc = 'LSP Rename' })
 
+-- Thicker vsplit to improve readability
+vim.opt.fillchars:append { vert = "┃" }
+
