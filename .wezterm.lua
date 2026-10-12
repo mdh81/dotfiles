@@ -196,5 +196,7 @@ config.colors = {
 
 -- Apply the plugin
 -- theme_rotator.apply_to_config(config)
+--
+config.audible_bell = "Disabled"
 
 return config

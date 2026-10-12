@@ -15,12 +15,32 @@ local lazy_config = require "configs.lazy"
 
 -- load plugins
 require("lazy").setup({
+	-- NvChad
   {
     "NvChad/NvChad",
     lazy = false,
     branch = "v2.5",
     import = "nvchad.plugins",
   },
+  -- neogit
+	{
+		"NeogitOrg/neogit",
+		lazy = true,
+		dependencies = {
+			-- advanced diff viewer  
+			"sindrets/diffview.nvim",        -- optional
+
+			-- For a custom log pager
+			"m00qek/baleia.nvim",            -- optional
+
+			-- Only one of these is needed.
+			"nvim-telescope/telescope.nvim", -- optional
+		},
+		cmd = "Neogit",
+		keys = {
+			{ "<leader>gg", "<cmd>Neogit<cr>", desc = "Show Neogit UI" }
+		}
+	},
 
   { import = "plugins" },
 }, lazy_config)

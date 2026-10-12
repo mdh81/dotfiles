@@ -191,10 +191,15 @@ config.keys = {
 
 config.term = "xterm"
 
--- Load the theme rotator plugin
--- local theme_rotator = wezterm.plugin.require 'https://github.com/koh-sh/wezterm-theme-rotator'
+-- Disable the annoying audio bell
+config.audible_bell = "Disabled"
 
--- Apply the plugin
--- theme_rotator.apply_to_config(config)
+config.mouse_bindings = {
+    {
+        event = { Up = { streak = 1, button = 'Left' } },
+        mods = 'NONE',
+        action = wezterm.action.CompleteSelectionOrOpenLinkAtMouseCursor 'Clipboard',
+    },
+}
 
 return config
