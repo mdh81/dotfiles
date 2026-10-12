@@ -14,7 +14,7 @@ config.font = wezterm.font_with_fallback({
 config.font_size = 15
 
 -- 2. Theme Selection 
-config.color_scheme = 'rose-pine-moon'
+config.color_scheme = 'Afterglow'
 
 -- 3. Window Layout Aesthetic
 config.window_background_opacity = 0.95        -- Sleek transparency
@@ -191,12 +191,6 @@ config.colors = {
   selection_fg = '#11111b', -- Text color for selected text
 }
 
--- Load the theme rotator plugin
--- local theme_rotator = wezterm.plugin.require 'https://github.com/koh-sh/wezterm-theme-rotator'
-
--- Apply the plugin
--- theme_rotator.apply_to_config(config)
---
 config.audible_bell = "Disabled"
 
 return config
