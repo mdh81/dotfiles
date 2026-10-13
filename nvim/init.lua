@@ -40,9 +40,6 @@ require("lazy").setup({
       keys = {
           { "<leader>gg", "<cmd>Neogit<cr>", desc = "Show Neogit UI" }
       },
-      config = function()
-          require("configs.neogit")
-      end,
   },
 
   { import = "plugins" },
