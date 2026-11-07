@@ -14,7 +14,7 @@ config.font = wezterm.font_with_fallback({
 config.font_size = 15
 
 -- 2. Theme Selection 
-config.color_scheme = 'Afterglow'
+config.color_scheme = 'Afterglow (Gogh)'
 
 -- 3. Window Layout Aesthetic
 config.window_background_opacity = 0.95        -- Sleek transparency
