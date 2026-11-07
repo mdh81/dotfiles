@@ -6,8 +6,9 @@
 local M = {}
 
 M.base46 = {
-	theme = "chocolate",
-    transparency = true,
+  theme = "monokai-pro-spectrum",
+  transparency = true,
+  theme_toggle = { "monokai-pro-spectrum", "monokai-pro-light" },
 }
 
 return M

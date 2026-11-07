@@ -1,5 +1,25 @@
 return {
   {
+    "loctvl842/monokai-pro.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {},
+  },
+
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    config = function(_, opts)
+      local hooks = require "ibl.hooks"
+      hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
+        dofile(vim.g.base46_cache .. "blankline")
+      end)
+      hooks.register(hooks.type.WHITESPACE, hooks.builtin.hide_first_space_indent_level)
+      require("ibl").setup(opts)
+      dofile(vim.g.base46_cache .. "blankline")
+    end,
+  },
+
+  {
     "stevearc/conform.nvim",
     opts = require "configs.conform",
   },
