@@ -1,0 +1,1 @@
+return require("monokai-pro").nvchad("spectrum")
